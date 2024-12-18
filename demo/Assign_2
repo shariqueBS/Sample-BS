@@ -1,0 +1,69 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+grid_url = "http://localhost:4444"
+
+options = webdriver.ChromeOptions()
+assert options.capabilities['browserName'] == 'chrome'
+driver = webdriver.Remote(command_executor=grid_url, options=options)
+
+driver.get("https://www.browserstack.com")
+driver.maximize_window()
+
+print(driver.title)
+time.sleep(3)
+link = driver.find_element(By.LINK_TEXT,'Pricing')
+link.click()
+time.sleep(3)
+btn = driver.find_element(By.CLASS_NAME,'switch-wrap')
+btn.click()
+time.sleep(3)
+btn.click()
+time.sleep(3)
+
+driver.quit()
+
+#Opening BrowserStack and clicking on pricing and toggling price - Firefox
+
+options = webdriver.FirefoxOptions()
+assert options.capabilities['browserName'] == 'firefox'
+driver = webdriver.Remote(command_executor=grid_url, options=options)
+
+driver.get("https://www.browserstack.com")
+driver.maximize_window()
+
+print(driver.title)
+time.sleep(3)
+link = driver.find_element(By.LINK_TEXT,'Pricing')
+link.click()
+time.sleep(3)
+btn = driver.find_element(By.CLASS_NAME,'switch-wrap')
+btn.click()
+time.sleep(3)
+btn.click()
+time.sleep(3)
+
+driver.quit()
+
+#Opening BrowserStack and clicking on pricing and toggling price - Safari
+
+options = webdriver.SafariOptions()
+assert options.capabilities['browserName'] == 'safari'
+driver = webdriver.Remote(command_executor=grid_url, options=options)
+
+driver.get("https://www.browserstack.com")
+driver.maximize_window()
+print(driver.title)
+time.sleep(3)
+link = driver.find_element(By.LINK_TEXT,'Pricing')
+link.click()
+time.sleep(3)
+btn = driver.find_element(By.CLASS_NAME,'switch-wrap')
+btn.click()
+time.sleep(3)
+btn.click()
+time.sleep(3)
+
+driver.quit()
+
